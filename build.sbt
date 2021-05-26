@@ -6,7 +6,7 @@ import scala.xml.{ Elem, Node => XmlNode, NodeSeq => XmlNodeSeq }
 import scala.xml.transform.{ RewriteRule, RuleTransformer }
 
 ThisBuild / organization := "io.circe"
-ThisBuild / crossScalaVersions := List("3.0.0-RC3", "2.12.12", "2.13.5")
+ThisBuild / crossScalaVersions := List("3.0.0", "2.12.13", "2.13.6")
 ThisBuild / scalaVersion := crossScalaVersions.value.last
 
 ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8")
@@ -61,20 +61,20 @@ val compilerOptions = Seq(
   "-Ywarn-unused-import"
 )
 
-val catsVersion = "2.6.0"
+val catsVersion = "2.6.1"
 val jawnVersion = "1.1.2"
-val shapelessVersion = "2.3.3"
-val refinedVersion = "0.9.24"
+val shapelessVersion = "2.3.6"
+val refinedVersion = "0.9.25"
 
 val paradiseVersion = "2.1.1"
 
-val scalaTestVersion = "3.2.3"
-val scalaCheckVersion = "1.15.3"
-val munitVersion = "0.7.25"
-val disciplineVersion = "1.1.4"
-val disciplineScalaTestVersion = "2.1.4"
-val disciplineMunitVersion = "1.0.8"
-val scalaJavaTimeVersion = "2.2.2"
+val scalaTestVersion = "3.2.9"
+val scalaCheckVersion = "1.15.4"
+val munitVersion = "0.7.26"
+val disciplineVersion = "1.1.5"
+val disciplineScalaTestVersion = "2.1.5"
+val disciplineMunitVersion = "1.0.9"
+val scalaJavaTimeVersion = "2.3.0"
 
 /**
  * Some terrible hacks to work around Cats's decision to have builds for
@@ -401,7 +401,7 @@ lazy val genericJS = genericBase.js
 lazy val genericSimpleBase = circeCrossModule("generic-simple", mima = previousCirceVersion, CrossType.Pure)
   .settings(macroSettings)
   .settings(
-    crossScalaVersions := Seq("2.13.5"),
+    crossScalaVersions := Seq("2.13.6"),
     libraryDependencies += "com.chuusai" %%% "shapeless" % shapelessVersion,
     Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.AllLibraryJars
   )
@@ -493,7 +493,7 @@ lazy val scalajsJavaTimeTest = circeModule("scalajs-java-time-test", mima = None
 
 lazy val scodecBase = circeCrossModule("scodec", mima = previousCirceVersion)
   .settings(
-    libraryDependencies += "org.scodec" %%% "scodec-bits" % "1.1.26",
+    libraryDependencies += "org.scodec" %%% "scodec-bits" % "1.1.27",
     Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.AllLibraryJars
   )
   .jsSettings(
